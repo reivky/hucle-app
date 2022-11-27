@@ -20,7 +20,7 @@ class DataPresensiController extends Controller
         return view('data-presensi', [
             'title' => 'Data Presensi',
             'data_presensis' => DataPresensi::with(['karyawan', 'master_shift'])->latest()->paginate(10),
-            'karyawans' => Karyawan::latest()->get(),
+            'karyawans' => Karyawan::orderBy('nama', 'ASC')->get(),
             'master_shifts' => MasterShift::all(),
         ]);
     }
